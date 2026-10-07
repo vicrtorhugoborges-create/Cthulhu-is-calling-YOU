@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/document_data.gd" id="1_doc"]
+
+[resource]
+script = ExtResource("1_doc")
+id = "sonhos_wilcox"
+title = "Notas: os sonhos de Wilcox (março–abril de 1925)"
+kind = 1
+pages = PackedStringArray("2 de março. W. conta o sonho: grandes cidades de blocos titânicos e monólitos que tocam o céu, tudo escorrendo um limo verde. Hieróglifos nas paredes. Debaixo da terra, uma voz que não é voz, uma sensação que só a imaginação traduziria em som: \"Cthulhu fhtagn\".\n\n12 de março. Pergunto por cultos, sociedades secretas. Nada. Ele não entende minhas perguntas.", "23 de março. W. não veio. Febre e delírio, na casa da família, na Waterman Street. Grita de noite; fala de uma coisa \"de quilômetros de altura\" que anda e se arrasta.\n\n2 de abril. A febre passou de repente. W. não se lembra do delírio nem dos sonhos. Voltou a ser um rapaz comum. Pena.")
+knowledge = 5.0
+diary_id = "d_sonhos_wilcox"
+narration_after = "prologo_sonhos_wilcox"

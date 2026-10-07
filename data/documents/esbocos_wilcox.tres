@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/document_data.gd" id="1_doc"]
+
+[resource]
+script = ExtResource("1_doc")
+id = "esbocos_wilcox"
+title = "Esboços pregados na parede"
+kind = 1
+pages = PackedStringArray("Legendas a lápis, na letra nervosa de Wilcox:\n\n\"Os ângulos estão errados. Desenho uma esquina e ela vira para dentro.\"\n\n\"O limo desce, mas não cai. Nos degraus maiores ele escorre para cima.\"", "\"A porta. Sempre a mesma porta. Não sei se está deitada ou em pé.\"\n\n\"Não desenhar o que está atrás dela.\"")
+knowledge = 4.0
+narration_after = "atelie_desenhos"
+sets_flag = "read_sketches"

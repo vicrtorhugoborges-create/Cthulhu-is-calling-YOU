@@ -1,0 +1,267 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/vision_wilcox.gd" id="1_vision_wilcox"]
+[ext_resource type="Material" path="res://materials/water_vision.tres" id="2_water_vision"]
+[ext_resource type="Script" path="res://scripts/world/graybox.gd" id="3_graybox"]
+[ext_resource type="Material" path="res://materials/stone_green.tres" id="4_stone_green"]
+[ext_resource type="Material" path="res://materials/stone_green_small.tres" id="5_stone_green_small"]
+[ext_resource type="Material" path="res://materials/stone_green_carved.tres" id="6_stone_green_carved"]
+[ext_resource type="Material" path="res://materials/void.tres" id="7_void"]
+[ext_resource type="Script" path="res://scripts/world/story_trigger.gd" id="8_story_trigger"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.07, 0.14, 0.09, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.3, 0.5, 0.35, 1)
+ambient_light_energy = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2"]
+size = Vector2(300, 300)
+subdivide_width = 30
+subdivide_depth = 30
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3"]
+size = Vector3(14, 6, 3)
+
+[node name="VisionWilcox" type="Node3D"]
+script = ExtResource("1_vision_wilcox")
+level_id = "visao_wilcox"
+chapter = "capitulo_1"
+fog_color = Color(0.07, 0.14, 0.09, 1)
+fog_near = 8
+fog_far = 48
+ambience = "amb_sea_pressure_loop"
+ambience_db = -8
+music = "mus_drone_low_loop"
+music_db = -9
+drips = true
+extra_distortion = 0.35
+camera_far = 80
+roll_wobble_deg = 2.5
+checkpoint_on_enter = false
+kill_height = -1.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Triggers" type="Node3D" parent="."]
+
+[node name="Markers" type="Node3D" parent="."]
+
+[node name="GreenLight" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.86603, -0.40958, 0.28679, 0, 0.57358, 0.81915, -0.5, -0.70941, 0.49673, 0, 0, 0)
+light_color = Color(0.45, 0.75, 0.5, 1)
+light_energy = 1.1
+
+[node name="Water" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -30)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_2")
+material_override = ExtResource("2_water_vision")
+
+[node name="Seabed" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.6, -30)
+size = Vector3(300, 1, 300)
+material = ExtResource("4_stone_green")
+
+[node name="Slab1" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab2" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99774, 0, 0.06722, 0, 1, 0, -0.06722, 0, 0.99774, 0.32211, -0.5, -4.8)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab3" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99935, 0, 0.03598, 0, 1, 0, -0.03598, 0, 0.99935, 0.49272, -0.5, -9.6)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab4" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99885, 0, -0.048, 0, 1, 0, 0.048, 0, 0.99885, 0.4316, -0.5, -14.4)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab5" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.9981, 0, -0.06164, 0, 1, 0, 0.06164, 0, 0.9981, 0.16749, -0.5, -19.2)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab6" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99989, 0, 0.01502, 0, 1, 0, -0.01502, 0, 0.99989, -0.17539, -0.5, -24)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab7" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99757, 0, 0.06966, 0, 1, 0, -0.06966, 0, 0.99757, -0.43579, -0.5, -28.8)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab8" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99975, 0, 0.02228, 0, 1, 0, -0.02228, 0, 0.99975, -0.49123, -0.5, -33.6)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab9" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99833, 0, -0.05776, 0, 1, 0, 0.05776, 0, 0.99833, -0.31563, -0.5, -38.4)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab10" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99859, 0, -0.05317, 0, 1, 0, 0.05317, 0, 0.99859, 0.00841, -0.5, -43.2)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab11" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99957, 0, 0.02933, 0, 1, 0, -0.02933, 0, 0.99957, 0.32849, -0.5, -48)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Slab12" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99763, 0, 0.06884, 0, 1, 0, -0.06884, 0, 0.99763, 0.49408, -0.5, -52.8)
+size = Vector3(4, 1, 4.8)
+material = ExtResource("5_stone_green_small")
+surface = "stone"
+
+[node name="Titan1" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.92905, -0.14881, 0.33869, 0.20589, 0.96863, -0.13917, -0.30736, 0.19903, 0.93055, -14, 2, -6)
+size = Vector3(14, 12, 10)
+material = ExtResource("6_stone_green_carved")
+subdivisions_per_meter = 0.25
+
+[node name="Titan2" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.96546, -0.04039, -0.2574, 0.06937, 0.9921, 0.10453, 0.25115, -0.11878, 0.96063, 13, 6, -10)
+size = Vector3(10, 22, 10)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan3" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.80671, 0.14224, 0.57358, -0.17365, 0.98481, 0, -0.56486, -0.0996, 0.81915, -22, 0, -22)
+size = Vector3(24, 10, 18)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan4" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.98769, 0.15643, 0, -0.15584, 0.98393, -0.08716, -0.01363, 0.08608, 0.99619, 10, 12, -24)
+size = Vector3(8, 30, 8)
+material = ExtResource("6_stone_green_carved")
+subdivisions_per_meter = 0.25
+
+[node name="Titan5" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.97564, -0.13885, 0.16985, 0.10224, 0.97279, 0.20791, -0.1941, -0.18548, 0.96329, 26, 4, -32)
+size = Vector3(30, 16, 14)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan6" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.91709, -0.13893, 0.37369, 0.12157, 0.99013, 0.06976, -0.3797, -0.01854, 0.92493, -15, 16, -36)
+size = Vector3(12, 40, 12)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan7" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.86603, -0.08682, -0.4924, 0, 0.98481, -0.17365, 0.5, 0.15038, 0.85287, -30, 3, -46)
+size = Vector3(20, 14, 20)
+material = ExtResource("6_stone_green_carved")
+subdivisions_per_meter = 0.25
+
+[node name="Titan8" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.94482, 0.20083, 0.25882, -0.20791, 0.97815, 0, -0.25316, -0.05381, 0.96593, 16, 9, -48)
+size = Vector3(16, 26, 12)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan9" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.99756, -0.06976, 0, 0.0689, 0.98528, -0.15643, 0.01091, 0.15605, 0.98769, -9, 14, -52)
+size = Vector3(6, 34, 6)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan10" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.93969, -0.03575, -0.34015, 0, 0.99452, -0.10453, 0.34202, 0.09822, 0.93454, 34, 6, -58)
+size = Vector3(40, 20, 16)
+material = ExtResource("6_stone_green_carved")
+subdivisions_per_meter = 0.25
+
+[node name="Titan11" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.82317, 0.54384, 0.16318, -0.46985, 0.8138, -0.34202, -0.3188, 0.20487, 0.92542, 9.5, 3, -4)
+size = Vector3(9, 14, 9)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="Titan12" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(0.95106, -0.30902, 0, 0.28006, 0.86195, 0.42262, -0.1306, -0.40193, 0.90631, -11, 1, -16)
+size = Vector3(11, 9, 14)
+material = ExtResource("4_stone_green")
+subdivisions_per_meter = 0.25
+
+[node name="EndWall" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -72)
+size = Vector3(60, 50, 6)
+material = ExtResource("6_stone_green_carved")
+subdivisions_per_meter = 0.25
+
+[node name="EndDoorShadow" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("3_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -68.8)
+size = Vector3(16, 22, 1)
+material = ExtResource("7_void")
+has_collision = false
+
+[node name="End" type="Area3D" parent="Triggers"]
+script = ExtResource("8_story_trigger")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -53)
+
+[node name="Shape" type="CollisionShape3D" parent="Triggers/End"]
+shape = SubResource("BoxShape3D_3")
+
+[node name="start" type="Marker3D" parent="Markers" groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 1.5)

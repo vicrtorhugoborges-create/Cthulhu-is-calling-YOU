@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/document_data.gd" id="1_doc"]
+
+[resource]
+script = ExtResource("1_doc")
+id = "carta_executor"
+title = "Carta do advogado — Boston, dezembro de 1926"
+kind = 0
+pages = PackedStringArray("Prezado Sr. Thurston,\n\nNa condição de herdeiro e executor do falecido professor George Gammell Angell, emérito de Línguas Semíticas da Universidade Brown, o senhor recebe com esta as caixas de papéis retiradas da casa da Williams Street.\n\nO professor morreu no inverno passado, aos noventa e dois anos. Os médicos falaram numa lesão obscura do coração, agravada pela subida da ladeira do porto.", "Chamo sua atenção para uma caixa de madeira que o professor guardava trancada e cuja chave não encontramos na casa. Para não danificar o conteúdo, preferi não forçá-la.\n\nSegue também o envelope com os pertences que ele trazia consigo no dia do falecimento.\n\nCom estima,\nDr. S. Hollis")
+knowledge = 1.0
+diary_id = "d_caixa"
+narration_after = "prologo_carta"

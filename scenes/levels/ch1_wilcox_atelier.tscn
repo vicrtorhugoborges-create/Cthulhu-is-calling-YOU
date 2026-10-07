@@ -1,0 +1,473 @@
+[gd_scene load_steps=38 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/atelier.gd" id="1_atelier"]
+[ext_resource type="Script" path="res://scripts/world/graybox.gd" id="2_graybox"]
+[ext_resource type="Material" path="res://materials/wood_floor.tres" id="3_wood_floor"]
+[ext_resource type="Material" path="res://materials/plaster.tres" id="4_plaster"]
+[ext_resource type="Material" path="res://materials/brick.tres" id="5_brick"]
+[ext_resource type="Material" path="res://materials/wood_dark.tres" id="6_wood_dark"]
+[ext_resource type="Material" path="res://materials/window_rain.tres" id="7_window_rain"]
+[ext_resource type="Material" path="res://materials/lamp_glow.tres" id="8_lamp_glow"]
+[ext_resource type="Material" path="res://materials/cloth_dark.tres" id="9_cloth_dark"]
+[ext_resource type="Material" path="res://materials/clay.tres" id="10_clay"]
+[ext_resource type="Material" path="res://materials/paper.tres" id="11_paper"]
+[ext_resource type="Material" path="res://materials/glyph.tres" id="12_glyph"]
+[ext_resource type="Script" path="res://scripts/world/npc_figure.gd" id="13_npc_figure"]
+[ext_resource type="Script" path="res://scripts/world/statue.gd" id="14_statue"]
+[ext_resource type="Script" path="res://scripts/world/shifty_object.gd" id="15_shifty_object"]
+[ext_resource type="Script" path="res://scripts/interaction/talker.gd" id="16_talker"]
+[ext_resource type="Script" path="res://scripts/interaction/use_target.gd" id="17_use_target"]
+[ext_resource type="Resource" path="res://data/documents/esbocos_wilcox.tres" id="18_esbocos_wilcox"]
+[ext_resource type="Script" path="res://scripts/interaction/readable_document.gd" id="19_readable_document"]
+[ext_resource type="Script" path="res://scripts/world/tentacle_shadow_spot.gd" id="20_tentacle_shadow_spot"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.01, 0.01, 0.015, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.35, 0.33, 0.32, 1)
+ambient_light_energy = 0.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_2"]
+size = Vector2(2, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3"]
+size = Vector2(1.6, 1.8)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4"]
+top_radius = 0.08
+bottom_radius = 0.2
+height = 0.2
+radial_segments = 8
+rings = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_5"]
+size = Vector2(0.7, 0.9)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6"]
+radius = 0.12
+height = 0.18
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_7"]
+radius = 0.08
+height = 0.12
+radial_segments = 6
+rings = 3
+
+[sub_resource type="QuadMesh" id="QuadMesh_8"]
+size = Vector2(0.32, 0.42)
+
+[sub_resource type="QuadMesh" id="QuadMesh_9"]
+size = Vector2(0.32, 0.42)
+
+[sub_resource type="QuadMesh" id="QuadMesh_10"]
+size = Vector2(0.32, 0.42)
+
+[sub_resource type="QuadMesh" id="QuadMesh_11"]
+size = Vector2(0.32, 0.42)
+
+[sub_resource type="QuadMesh" id="QuadMesh_12"]
+size = Vector2(0.32, 0.42)
+
+[sub_resource type="QuadMesh" id="QuadMesh_13"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14"]
+size = Vector3(0.8, 1.6, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15"]
+size = Vector3(0.9, 1.2, 0.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16"]
+size = Vector3(0.2, 1, 1.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17"]
+size = Vector3(1.2, 2.2, 0.2)
+
+[node name="Atelier" type="Node3D"]
+script = ExtResource("1_atelier")
+level_id = "atelie"
+chapter = "capitulo_1"
+fog_color = Color(0.05, 0.05, 0.06, 1)
+fog_near = 5
+fog_far = 18
+ambience = "amb_rain_loop"
+ambience_db = -13
+camera_far = 40
+enter_narration = "atelie_chegada"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Triggers" type="Node3D" parent="."]
+
+[node name="Markers" type="Node3D" parent="."]
+
+[node name="Statues" type="Node3D" parent="."]
+
+[node name="Shifty" type="Node" parent="."]
+
+[node name="WorkLamp" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.2, -2)
+light_color = Color(1, 0.8, 0.5, 1)
+light_energy = 1.5
+omni_range = 6.5
+omni_attenuation = 1.3
+
+[node name="Skylight" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 3.9, -0.5)
+light_color = Color(0.5, 0.58, 0.75, 1)
+light_energy = 1
+spot_range = 6
+spot_angle = 45
+
+[node name="WindowGlow" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.2, 1.2)
+light_color = Color(0.45, 0.52, 0.7, 1)
+light_energy = 0.5
+omni_range = 3.5
+omni_attenuation = 1.5
+
+[node name="Floor" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(9, 0.2, 8)
+material = ExtResource("3_wood_floor")
+surface = "wood"
+
+[node name="CeilingNorth" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1, -2.75)
+size = Vector3(9, 0.2, 2.5)
+material = ExtResource("4_plaster")
+
+[node name="CeilingSouth" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1, 2.25)
+size = Vector3(9, 0.2, 3.5)
+material = ExtResource("4_plaster")
+
+[node name="CeilingWest" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 4.1, -0.5)
+size = Vector3(3.5, 0.2, 2)
+material = ExtResource("4_plaster")
+
+[node name="CeilingEast" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 4.1, -0.5)
+size = Vector3(3.5, 0.2, 2)
+material = ExtResource("4_plaster")
+
+[node name="WallNorth" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4.1)
+size = Vector3(9.4, 4.2, 0.2)
+material = ExtResource("5_brick")
+
+[node name="WallEast" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 2, 0)
+size = Vector3(0.2, 4.2, 8.4)
+material = ExtResource("5_brick")
+
+[node name="WallWest" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 2, 0)
+size = Vector3(0.2, 4.2, 8.4)
+material = ExtResource("5_brick")
+
+[node name="WallSouthLeft" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 2, 4.1)
+size = Vector3(4.1, 4.2, 0.2)
+material = ExtResource("5_brick")
+
+[node name="WallSouthRight" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 2, 4.1)
+size = Vector3(4.1, 4.2, 0.2)
+material = ExtResource("5_brick")
+
+[node name="WallSouthTop" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 4.1)
+size = Vector3(1.2, 1.9, 0.2)
+material = ExtResource("5_brick")
+
+[node name="ExitDoorSlab" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 3.98)
+size = Vector3(1.2, 2.3, 0.08)
+material = ExtResource("6_wood_dark")
+
+[node name="WorkTable" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0.425, -3.2)
+size = Vector3(1.6, 0.85, 0.8)
+material = ExtResource("6_wood_dark")
+
+[node name="Shelf" type="StaticBody3D" parent="Geometry"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0.9, -2.6)
+size = Vector3(0.5, 1.8, 2.4)
+material = ExtResource("6_wood_dark")
+
+[node name="SkylightGlass" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 4.05, -0.5)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_2")
+material_override = ExtResource("7_window_rain")
+
+[node name="Window" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 4.49, 2.2, 1.2)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3")
+material_override = ExtResource("7_window_rain")
+
+[node name="Lamp" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.55, -2)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_4")
+material_override = ExtResource("8_lamp_glow")
+
+[node name="LampCord" type="StaticBody3D" parent="Props"]
+script = ExtResource("2_graybox")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.37, -2)
+size = Vector3(0.01, 1.45, 0.01)
+material = ExtResource("9_cloth_dark")
+has_collision = false
+
+[node name="EaselLegL" type="StaticBody3D" parent="Props"]
+script = ExtResource("2_graybox")
+transform = Transform3D(0.92957, -0.14556, 0.33869, 0.10351, 0.98484, 0.13917, -0.35382, -0.09431, 0.93055, 1.2, 0.85, -3)
+size = Vector3(0.04, 1.7, 0.04)
+material = ExtResource("6_wood_dark")
+has_collision = false
+
+[node name="EaselLegR" type="StaticBody3D" parent="Props"]
+script = ExtResource("2_graybox")
+transform = Transform3D(0.93952, 0.05089, 0.33869, -0.10351, 0.98484, 0.13917, -0.32648, -0.16581, 0.93055, 1.65, 0.85, -2.85)
+size = Vector3(0.04, 1.7, 0.04)
+material = ExtResource("6_wood_dark")
+has_collision = false
+
+[node name="Canvas" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0.93969, -0.0476, 0.33869, 0, 0.99027, 0.13917, -0.34202, -0.13078, 0.93055, 1.42, 1.3, -2.86)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_5")
+material_override = ExtResource("4_plaster")
+
+[node name="ClayLump1" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.92, -3.2)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_6")
+material_override = ExtResource("10_clay")
+
+[node name="ClayLump2" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0.9, -3.1)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_7")
+material_override = ExtResource("10_clay")
+
+[node name="Sketch1" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0, 0, 1, -0.08716, 0.99619, 0, -0.99619, -0.08716, 0, -4.49, 1.9, -1.6)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_8")
+material_override = ExtResource("11_paper")
+
+[node name="Sketch2" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0, 0, 1, 0.06976, 0.99756, 0, -0.99756, 0.06976, 0, -4.49, 1.5, -1)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_9")
+material_override = ExtResource("11_paper")
+
+[node name="Sketch3" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0, 0, 1, -0.08716, 0.99619, 0, -0.99619, -0.08716, 0, -4.49, 2, -0.6)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_10")
+material_override = ExtResource("11_paper")
+
+[node name="Sketch4" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0, 0, 1, 0.06976, 0.99756, 0, -0.99756, 0.06976, 0, -4.49, 1.3, -1.9)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_11")
+material_override = ExtResource("11_paper")
+
+[node name="Sketch5" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0, 0, 1, -0.08716, 0.99619, 0, -0.99619, -0.08716, 0, -4.49, 1.75, -0.2)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_12")
+material_override = ExtResource("11_paper")
+
+[node name="GlyphOnDoor" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 1.7, 3.93)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_13")
+material_override = ExtResource("12_glyph")
+
+[node name="Wilcox" type="Node3D" parent="."]
+script = ExtResource("13_npc_figure")
+transform = Transform3D(0.93969, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.93969, 2.4, 0, -2.4)
+
+[node name="S1" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(0.86603, 0, 0.5, 0, 1, 0, -0.5, 0, 0.86603, -3.4, 0, -2.6)
+shape_seed = 3
+
+[node name="ShiftyS1" type="Node" parent="Shifty" node_paths=PackedStringArray("target")]
+script = ExtResource("15_shifty_object")
+target = NodePath("../../Statues/S1")
+min_tier = 0
+required_flag = "wilcox_talked"
+unseen_seconds = 2.5
+chance = 0.55
+notice_narration = "atelie_estatua_mudou"
+notice_diary = "d_estatuas"
+look_height = 1.4
+
+[node name="S2" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(0.17365, 0, 0.98481, 0, 1, 0, -0.98481, 0, 0.17365, -3.5, 0, 0.4)
+shape_seed = 7
+
+[node name="ShiftyS2" type="Node" parent="Shifty" node_paths=PackedStringArray("target")]
+script = ExtResource("15_shifty_object")
+target = NodePath("../../Statues/S2")
+min_tier = 0
+required_flag = "wilcox_talked"
+unseen_seconds = 2.5
+chance = 0.55
+notice_narration = "atelie_estatua_mudou"
+notice_diary = "d_estatuas"
+look_height = 1.4
+
+[node name="S3" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(-0.93969, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.93969, -1, 0, -1.6)
+shape_seed = 11
+
+[node name="ShiftyS3" type="Node" parent="Shifty" node_paths=PackedStringArray("target")]
+script = ExtResource("15_shifty_object")
+target = NodePath("../../Statues/S3")
+min_tier = 0
+required_flag = "wilcox_talked"
+unseen_seconds = 2.5
+chance = 0.55
+notice_narration = "atelie_estatua_mudou"
+notice_diary = "d_estatuas"
+look_height = 1.4
+
+[node name="S4" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(-0.5, 0, -0.86603, 0, 1, 0, 0.86603, 0, -0.5, 0.9, 0, 1.4)
+shape_seed = 5
+
+[node name="ShiftyS4" type="Node" parent="Shifty" node_paths=PackedStringArray("target")]
+script = ExtResource("15_shifty_object")
+target = NodePath("../../Statues/S4")
+min_tier = 0
+required_flag = "wilcox_talked"
+unseen_seconds = 2.5
+chance = 0.55
+notice_narration = "atelie_estatua_mudou"
+notice_diary = "d_estatuas"
+look_height = 1.4
+
+[node name="S5" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(0.76604, 0, 0.64279, 0, 1, 0, -0.64279, 0, 0.76604, -2.2, 0, 2.6)
+shape_seed = 13
+
+[node name="ShiftyS5" type="Node" parent="Shifty" node_paths=PackedStringArray("target")]
+script = ExtResource("15_shifty_object")
+target = NodePath("../../Statues/S5")
+min_tier = 0
+required_flag = "wilcox_talked"
+unseen_seconds = 2.5
+chance = 0.55
+notice_narration = "atelie_estatua_mudou"
+notice_diary = "d_estatuas"
+look_height = 1.4
+
+[node name="S6" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(0.34202, 0, -0.93969, 0, 1, 0, 0.93969, 0, 0.34202, 3.2, 0, 2.4)
+shape_seed = 17
+
+[node name="ShiftyS6" type="Node" parent="Shifty" node_paths=PackedStringArray("target")]
+script = ExtResource("15_shifty_object")
+target = NodePath("../../Statues/S6")
+min_tier = 0
+required_flag = "wilcox_talked"
+unseen_seconds = 2.5
+chance = 0.55
+notice_narration = "atelie_estatua_mudou"
+notice_diary = "d_estatuas"
+look_height = 1.4
+
+[node name="MorbidStatue" type="StaticBody3D" parent="Statues"]
+script = ExtResource("14_statue")
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 3.6, 0, 0.6)
+shape_seed = 23
+morbid = true
+
+[node name="WilcoxTalk" type="Area3D" parent="Interactables"]
+script = ExtResource("16_talker")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.8, -2.3)
+blocks = PackedStringArray("wilcox_1,wilcox_2", "wilcox_3,wilcox_4", "wilcox_5")
+repeat_line = "wilcox_repete"
+
+[node name="Shape" type="CollisionShape3D" parent="Interactables/WilcoxTalk"]
+shape = SubResource("BoxShape3D_14")
+
+[node name="MorbidPiece" type="Area3D" parent="Interactables"]
+script = ExtResource("17_use_target")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 1.3, 0.6)
+hint_id = "use"
+enabled = false
+
+[node name="Shape" type="CollisionShape3D" parent="Interactables/MorbidPiece"]
+shape = SubResource("BoxShape3D_15")
+
+[node name="SketchWall" type="Area3D" parent="Interactables"]
+script = ExtResource("19_readable_document")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 1.65, -1.05)
+document = ExtResource("18_esbocos_wilcox")
+
+[node name="Shape" type="CollisionShape3D" parent="Interactables/SketchWall"]
+shape = SubResource("BoxShape3D_16")
+
+[node name="ExitDoor" type="Area3D" parent="Interactables"]
+script = ExtResource("17_use_target")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 3.85)
+required_flag = "vision_done"
+locked_narration = "atelie_porta_cedo"
+hint_id = "door"
+
+[node name="Shape" type="CollisionShape3D" parent="Interactables/ExitDoor"]
+shape = SubResource("BoxShape3D_17")
+
+[node name="ShadowWest" type="Node3D" parent="Props"]
+script = ExtResource("20_tentacle_shadow_spot")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0, 2)
+
+[node name="ShadowEast" type="Node3D" parent="Props"]
+script = ExtResource("20_tentacle_shadow_spot")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0, -1)
+
+[node name="start" type="Marker3D" parent="Markers" groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2)
+
+[node name="after_vision" type="Marker3D" parent="Markers" groups=["spawn"]]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2.9, 0, 0.9)

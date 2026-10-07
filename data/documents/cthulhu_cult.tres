@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/document_data.gd" id="1_doc"]
+
+[resource]
+script = ExtResource("1_doc")
+id = "cthulhu_cult"
+title = "CTHULHU CULT"
+kind = 1
+pages = PackedStringArray("1. 1925 — Sonho e obra onírica de H. A. Wilcox, Thomas Street, 7, Providence, R.I.\n\n2. Relato do inspetor John R. Legrasse, Bienville Street, 121, Nova Orleans, La., na reunião da Sociedade Americana de Arqueologia, 1908 — notas sobre o mesmo e relato do prof. Webb.", "1º de março de 1925. Um rapaz magro, nervoso, de olhos agitados, me procurou com um baixo-relevo de argila ainda úmido. Disse chamar-se Henry Anthony Wilcox, escultor, morador do Edifício Fleur-de-Lys.\n\nContou que o fizera na noite anterior, dormindo, depois de um leve tremor de terra. Pediu que eu identificasse os hieróglifos. Não pude.", "A figura: um monstro de contorno vagamente humano, cabeça de polvo, uma massa de tentáculos no lugar do rosto, corpo escamoso, garras e asas estreitas nas costas. Ao fundo, uma sugestão de arquitetura ciclópica.\n\nO rapaz fala de cidades de blocos titânicos e de uma palavra que só consegue escrever como \"Cthulhu fhtagn\". Recebê-lo todos os dias. Anotar tudo.", "Os outros papéis (Legrasse, Webb, os recortes) estão nas pastas seguintes. Ninguém precisa saber disto até que eu tenha certeza.\n\n— G. G. A.")
+knowledge = 6.0
+diary_id = "d_culto"
+narration_after = "prologo_manuscrito"
+sets_flag = "read_cthulhu_cult"

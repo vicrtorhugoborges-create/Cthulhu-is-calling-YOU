@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/document_data.gd" id="1_doc"]
+
+[resource]
+script = ExtResource("1_doc")
+id = "teste"
+title = "Documento de teste"
+kind = 0
+pages = PackedStringArray("Este papel serve para testar o leitor de documentos: fonte de máquina de escrever, papel amarelado e páginas.\n\nClique ou aperte D para virar a página.", "Segunda página. Aperte Esc ou E para fechar. Fechar registra a leitura no diário e no Conhecimento.")
+knowledge = 0.0
+diary_id = "d_teste"
+narration_after = "teste_documento"

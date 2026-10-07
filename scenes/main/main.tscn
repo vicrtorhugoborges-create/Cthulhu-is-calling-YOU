@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/main/main.gd" id="1_main"]
+[ext_resource type="Shader" path="res://shaders/ps1_post.gdshader" id="2_post"]
+[ext_resource type="Script" path="res://scripts/ui/ui_root.gd" id="3_ui"]
+[ext_resource type="Script" path="res://scripts/world/corruption_director.gd" id="4_corruption"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_post"]
+shader = ExtResource("2_post")
+
+[node name="Main" type="Node"]
+script = ExtResource("1_main")
+
+[node name="WorldContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_post")
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="WorldViewport" type="SubViewport" parent="WorldContainer"]
+handle_input_locally = false
+msaa_3d = 0
+audio_listener_enable_3d = true
+size = Vector2i(320, 240)
+render_target_update_mode = 4
+
+[node name="LevelRoot" type="Node3D" parent="WorldContainer/WorldViewport"]
+
+[node name="CorruptionDirector" type="Node" parent="."]
+script = ExtResource("4_corruption")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_ui")
+
+[node name="Fade" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="FadeRect" type="ColorRect" parent="Fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

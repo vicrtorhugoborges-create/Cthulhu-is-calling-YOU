@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DocumentData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/document_data.gd" id="1_doc"]
+
+[resource]
+script = ExtResource("1_doc")
+id = "obituario_angell"
+title = "THE PROVIDENCE JOURNAL\nMorre o professor Angell"
+kind = 2
+pages = PackedStringArray("PROVIDENCE — Faleceu ontem à noite o professor George Gammell Angell, emérito de Línguas Semíticas da Universidade Brown e autoridade conhecida em inscrições antigas.\n\nO professor voltava do barco de Newport quando caiu de súbito na ladeira estreita que sobe do cais até a Williams Street. Testemunhas dizem que ele foi empurrado por um marinheiro que saiu de um dos pátios escuros da encosta e sumiu em seguida.", "Socorrido por quem passava, morreu pouco depois. Os médicos atribuem a morte a uma lesão obscura do coração, provocada pela subida íngreme num homem de idade tão avançada.\n\nO professor deixa um sobrinho-neto em Boston, o Sr. Francis Wayland Thurston, seu único herdeiro.")
+knowledge = 3.0
+diary_id = "d_morte_angell"
+narration_after = "prologo_obituario"
